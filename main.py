@@ -65,3 +65,5 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = PlaylistDownloaderGUI(root, download_callback=download_playlist)
     root.mainloop()
+
+#TO DO Add selection box to specify whether video or audio

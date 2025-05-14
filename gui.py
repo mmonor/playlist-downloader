@@ -45,7 +45,6 @@ class PlaylistDownloaderGUI:
 
         self.entry = tk.Entry(main_frame, width=40, font=("Helvetica", 14))
         self.entry.grid(row=3, column=0, pady=10)
-        # Add this in __init__ method (above the download button)
         self.format_var = tk.StringVar(value="audio")
 
         format_frame = tk.Frame(main_frame, bg=bg_color)
