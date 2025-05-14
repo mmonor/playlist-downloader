@@ -1,14 +1,17 @@
 import tkinter as tk
 from PIL import Image, ImageTk
+import tkinter.messagebox as messagebox
 
 class PlaylistDownloaderGUI:
-    def __init__(self, root):
+    def __init__(self, root,download_callback=None):
         self.root = root
         self.root.title("Playlist Downloader")
         self.root.minsize(500, 300)
-        self.root.configure(bg="#f0f0f0")  # TODO: change background color
+        self.root.configure(bg="#48248f")  # TODO: change background color
 
         bg_color = "#48248f"
+
+        self.download_callback = download_callback
 
         # TODO: add a YouTube logo next to the text ##FIXED
         image = Image.open("youtube.png")
@@ -52,5 +55,19 @@ class PlaylistDownloaderGUI:
             bg="green",
             font=("Helvetica", 12),
             padx=15,
-            pady=15
+            pady=15,
+            command=self.handle_download
         ).grid(row=4, column=0, pady=10)
+
+    def handle_download(self):
+        url = self.entry.get()
+        if not url:
+            messagebox.showerror("Error", "Please fill in this field")
+            return
+
+        if "youtube.com" not in url:
+            messagebox.showerror("Error", "This is not a valid URL")
+            return
+        if self.download_callback:
+            self.download_callback(url)
+
