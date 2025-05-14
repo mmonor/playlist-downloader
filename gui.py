@@ -51,8 +51,7 @@ class PlaylistDownloaderGUI:
         format_frame = tk.Frame(main_frame, bg=bg_color)
         format_frame.grid(row=4, column=0, pady=10)
 
-        tk.Label(format_frame, text="Download format:", font=("Helvetica", 12), bg=bg_color, fg="white").pack(
-            side="left", padx=10)
+
 
 
 
