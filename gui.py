@@ -2,13 +2,13 @@ import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
 import tkinter.messagebox as messagebox
-
+bg_color = "#48248f"
 class PlaylistDownloaderGUI:
     def __init__(self, root, download_callback=None):
         self.root = root
         self.root.title("Playlist Downloader")
         self.root.minsize(500, 300)
-        self.root.configure(bg="#48248f")  # Background color
+        self.root.configure(bg="#48248f")
 
         self.download_callback = download_callback
 
@@ -45,6 +45,16 @@ class PlaylistDownloaderGUI:
 
         self.entry = tk.Entry(main_frame, width=40, font=("Helvetica", 14))
         self.entry.grid(row=3, column=0, pady=10)
+        # Add this in __init__ method (above the download button)
+        self.format_var = tk.StringVar(value="audio")
+
+        format_frame = tk.Frame(main_frame, bg=bg_color)
+        format_frame.grid(row=4, column=0, pady=10)
+
+        tk.Label(format_frame, text="Download format:", font=("Helvetica", 12), bg=bg_color, fg="white").pack(
+            side="left", padx=10)
+
+
 
         # Download button
         tk.Button(
